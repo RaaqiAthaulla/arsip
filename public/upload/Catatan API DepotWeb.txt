@@ -1,0 +1,255 @@
+Catatan API Depot Web Request
+==============================
+
+[Get All User]
+--------------
+METHOD	: GET /depot/users/getAll.php
+PARAM	: TIDAK ADA
+BODY	: TIDAK ADA
+REPLY	: JSON
+[
+	{
+		"userId"		: int(6),
+		"username"		: string(20),
+		"password"		: string(30),
+		"nama"			: string(50),
+		"email"			: string(25),
+		"telepon"		: string(15),
+		"created_date"	: Y-m-d,
+		"last_logIn"	: Y-m-d H:i:s,
+		"is_active"		: int(1),
+		"role"			: int(1)
+	},
+	...
+]
+
+[Get User List]
+---------------
+METHOD	: GET /depot/users/getList.php
+PARAM 	: TIDAK ADA
+BODY	: TIDAK ADA
+REPLY	: JSON
+[
+	{
+		"userId"		: int(6),
+		"nama"			: string(50)
+	},
+	...
+]
+
+[Get User Data]
+---------------
+METHOD	: GET /depot/users/get.php
+PARAM 	: user_id={user_id}
+BODY	: TIDAK ADA
+REPLY	: JSON
+{
+	"userId"		: int(6),
+	"username"		: string(20),
+	"password"		: string(30),
+	"nama"			: string(50),
+	"email"			: string(25),
+	"telepon"		: string(15),
+	"created_date"	: Y-m-d,
+	"last_logIn"	: Y-m-d H:i:s,
+	"isActive"		: int(1),
+	"role"			: int(1)
+}
+
+[User Login]
+------------
+METHOD	: GET /depot/users/login.php
+PARAM	: username={username}
+          password={password}
+BODY	: TIDAK ADA
+REPLY 	: JSON
+{
+	"result"	: boolean (true / false),
+	"message"	: string ("User dan Password sesuai" / "User atau Password tidak sesuai"),
+	"userId"		: int(6),
+	"username"		: string(20),
+	"nama"			: string(50),
+	"email"			: string(25),
+	"telepon"		: string(15),
+	"role"			: int(1)
+}
+
+[Registrasi]
+------------
+METHOD	: POST /depot/users/post.php
+PARAM	: TIDAK ADA
+BODY	: JSON
+{
+	"userId"		: int(6),
+	"username"		: string(20),
+	"password"		: string(30),
+	"nama"			: string(50),
+	"email"			: string(25),
+	"telepon"		: string(15),
+	"created_date"	: Y-m-d,
+	"last_logIn"	: Y-m-d H:i:s,
+	"is_active"		: int(1),
+	"role"			: int(1)
+}
+REPLY	: JSON
+{	"result"	: boolean (true / false),
+	"message"	: string ("Success" / "Failed")
+}
+
+[Edit User Data]
+------------
+METHOD	: PUT /depot/users/put.php
+PARAM	: TIDAK ADA
+BODY	: JSON
+{
+	"userId"		: int(6),
+	"password"		: string(30),
+	"email"			: string(25),
+	"telepon"		: string(15),
+	"is_active"		: int(1)
+}
+REPLY	: JSON
+{	"result"	: boolean (true / false),
+	"message"	: string ("Success" / "Failed")
+}
+
+[Get All Projek]
+------------
+METHOD	: Get /depot/projects/getAll.php
+PARAM	: TIDAK ADA
+BODY	: TIDAK ADA
+REPLY	: JSON
+[
+    {
+        "id_projek": int(20),
+        "id_depot": varchar(50),
+        "judul": judul(255),
+        "prioritas": varchar(20),
+        "status": varchar(20),
+        "kategori": varchar(20),
+        "tenggat": Date(Y-m-d),
+        "user_id": int(6),
+        "deskripsi": longtext,
+        "waktu_error": varchar(255),
+        "fitur_error": varchar(255),
+        "gambar": varchar(255),
+        "finished": Date(Y-M-D)
+    }
+]
+
+[Get Projek Data]
+------------
+METHOD	: Get /depot/projects/getById.php
+PARAM	: id_projek={id_projek}
+BODY	: TIDAK ADA
+REPLY	: JSON
+[
+    {
+        "id_projek": int(20),
+        "id_depot": varchar(50),
+        "judul": judul(255),
+        "prioritas": varchar(20),
+        "status": varchar(20),
+        "kategori": varchar(20),
+        "tenggat": Date(Y-m-d),
+        "user_id": int(6),
+        "deskripsi": longtext,
+        "waktu_error": varchar(255),
+        "fitur_error": varchar(255),
+        "gambar": varchar(255),
+        "finished": Date(Y-M-D)
+    }
+]
+
+[Get Projek Data by Status]
+------------
+METHOD	: Get /depot/projects/getByStatus.php
+PARAM	: status={status}	  
+BODY	: TIDAK ADA
+REPLY	: JSON
+[
+    {
+        "id_projek": int(20),
+        "id_depot": varchar(50),
+        "judul": judul(255),
+        "prioritas": varchar(20),
+        "status": varchar(20),
+        "kategori": varchar(20),
+        "tenggat": Date(Y-m-d),
+        "user_id": int(6),
+        "deskripsi": longtext,
+        "waktu_error": varchar(255),
+        "fitur_error": varchar(255),
+        "gambar": varchar(255),
+        "finished": Date(Y-M-D)
+    }
+]
+
+[Get Projek Data by User]
+------------
+METHOD	: Get /depot/projects/getByUserStatus.php
+PARAM	: user_id={user_id}
+	  status={status}
+BODY	: TIDAK ADA
+REPLY	: JSON
+[
+    {
+        "id_projek": int(20),
+        "id_depot": varchar(50),
+        "judul": judul(255),
+        "prioritas": varchar(20),
+        "status": varchar(20),
+        "kategori": varchar(20),
+        "tenggat": Date(Y-m-d),
+        "user_id": int(6),
+        "deskripsi": longtext,
+        "waktu_error": varchar(255),
+        "fitur_error": varchar(255),
+        "gambar": varchar(255),
+        "finished": Date(Y-M-D)
+    }
+]
+
+[POST Projek]
+------------
+METHOD	: POST /depot/projects/post.php
+PARAM	: TIDAK ADA
+BODY	: JSON
+{
+	"id_projek": int(20),
+        "id_depot": varchar(50),
+        "judul": judul(255),
+        "prioritas": varchar(20),
+        "status": varchar(20),
+        "kategori": varchar(20),
+        "tenggat": Date(Y-m-d),
+        "user_id": int(6),
+        "deskripsi": longtext,
+        "waktu_error": varchar(255),
+        "fitur_error": varchar(255),
+        "gambar": varchar(255),
+        "finished": Date(Y-M-D)
+}
+REPLY	: JSON
+{	"result"	: boolean (true / false),
+	"message"	: string ("Success" / "Failed")
+}
+
+[Edit Projek]
+------------
+METHOD	: POST /depot/projects/put.php
+PARAM	: TIDAK ADA
+BODY	: JSON
+{
+	"id_projek": int(20),
+        "prioritas": varchar(20),
+        "status": varchar(20),
+        "tenggat": Date(Y-m-d),
+        "finished": Date(Y-M-D)
+}
+REPLY	: JSON
+{	"result"	: boolean (true / false),
+	"message"	: string ("Success" / "Failed")
+}
+
+
